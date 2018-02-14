@@ -1,0 +1,87 @@
+# Backup MySql database
+mysqldump --add-drop-table --user=cito --password=citoKUKU123 ebay_database > ebay_database.sql
+
+# Restoring database
+mysql -h localhost -u cito -p ebay_bak_database < ebay_database.sql
+
+#### Recovering table from backup #####
+
+#Create a temporary database (e.g. restore):
+CREATE DATABASE restore;
+
+Restore the full dump in the temp database:
+mysql -u cito -p restore < ebay_database.sql
+
+#Dump the table you want to recover:
+mysqldump --user=cito --password=citoKUKU123 restore cost_tbl > cost_tbl.sql
+
+#Import the table in another database:
+mysql -u cito -p ebay_database < mytable.sql
+
+#######################################
+
+
+
+# create table
+mysql> CREATE TABLE cost_tbl_2(
+    -> id INT NOT NULL AUTO_INCREMENT,
+    -> PRIMARY KEY(id));
+
+CREATE TABLE refunds_tbl(id INT NOT NULL AUTO_INCREMENT, sales_record_number INT NOT NULL, sku VARCHAR(50), refund_amount DECIMAL(12,2), refund_date DATE, remarks VARCHAR(100), PRIMARY KEY(id));
+
+# Drop primary key
+ALTER TABLE sales_tbl DROP PRIMARY KEY
+
+# insert a column and set as primary
+ALTER TABLE sales_tbl ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;
+
+# Insert into table
+insert into refunds_tbl (sales_record_number, refund_amount) VALUES (2242,2.4);
+
+# Show columns
+SHOW COLUMNS FROM sales_tbl;
+
+# Update data
+UPDATE refunds_tbl SET remarks='incorrect address' where sales_record_number=2242;
+
+:q!:q!
+
+# Rename column name
+ALTER TABLE cost_tbl CHANGE vatiation variation VARCHAR(50)
+
+# unique column
+ALTER TABLE cost_tbl_2 ADD UNIQUE (item_description,variation);
+
+# delete column
+ALTER TABLE cost_tbl_2 DROP variation
+
+# When part of a string is known, return all the records
+SELECT * FROM sales_tbl WHERE buyer_fullname LIKE '%Alan%';
+
+# Add column:
+alter table refunds_tbl add item_description VARCHAR(100);
+
+# Delete row
+delete from cost_tbl where id=94
+
+# data_range
+select * from sales_tbl where sale_date >='2016-03-01'
+
+# insert data
+update purchase_tbl set date='2016-03-08' where id=1
+
+######## Opencart database ############
+
+Useful Tables
+oc_product_description
+oc_product
+
+oc_product_option
+oc_product_option_value
+
+
+## Join commands
+select a.product_id,a.price, b.name from oc_product a, oc_product_description b where a.product_id=b.product_id and b.name like '%giant%';
+
+select a.product_option_value_id, a.quantity, b.name from oc_product_option_value a, oc_option_value_description b where a.option_value_id=b.option_value_id
+

@@ -38,6 +38,7 @@ git branch -d my-branch
 # Delete a remote branch
 git push origin --delete my-branch
 
+# General workflow
 # Change to my-branch
 git checkout my-branch
 git add -A
@@ -45,6 +46,10 @@ git commit -m "Your message"
 git push -u origin my-branch
 git checkout master
 git pull origin master
-git merge my-branch
 git push origin master
+
+# To check merged branches
+git branch --merged
+# To merge with master checkout master and
+git merge my-branch
 

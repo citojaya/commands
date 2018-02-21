@@ -1,7 +1,7 @@
 
 # Search packages
 conda search scipy
-conda search --full-name python
+conda search -f python
 
 conda create -n py27 python=2.7 pymysql scipy numpy pandas vtk dateutil
 conda create --name my_project_env flask sqlalchemy numpy pandas
@@ -14,4 +14,5 @@ conda env export > environment.yaml
 # To create environement frm yaml file
 conda env create -f environment.yaml
 
+# To check environment list
 conda env list

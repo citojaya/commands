@@ -1,5 +1,10 @@
 GIT
 
+# Initialise git and add files from remote repository
+git init
+git remote add origin https://github.com/citojaya/commands.git
+git pull origin master
+
 # Clone remote repository
 git clone <remote-url> <local-directory>
 

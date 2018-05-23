@@ -44,8 +44,6 @@ SHOW COLUMNS FROM sales_tbl;
 # Update data
 UPDATE refunds_tbl SET remarks='incorrect address' where sales_record_number=2242;
 
-:q!:q!
-
 # Rename column name
 ALTER TABLE cost_tbl CHANGE vatiation variation VARCHAR(50)
 
@@ -70,6 +68,18 @@ select * from sales_tbl where sale_date >='2016-03-01'
 # insert data
 update purchase_tbl set date='2016-03-08' where id=1
 
+# Select top rows
+select * from sales_tbl limit 10;
+
+# select last few rows
+SELECT * FROM table LIMIT 10 OFFSET N-10 (N is the total number of rows)
+
+# count 
+SELECT COUNT(*) from sales_tbl;
+
+# rename table
+RENAME TABLE cost TO item_cost;
+
 ######## Opencart database ############
 
 Useful Tables
@@ -84,4 +94,6 @@ oc_product_option_value
 select a.product_id,a.price, b.name from oc_product a, oc_product_description b where a.product_id=b.product_id and b.name like '%giant%';
 
 select a.product_option_value_id, a.quantity, b.name from oc_product_option_value a, oc_option_value_description b where a.option_value_id=b.option_value_id
+
+select a.sales_record_number, a.custom_lable from sales_tbl a inner join cost b on a.sales_record_number=b.sales_record_number where b.item_cost is null
 

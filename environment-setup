@@ -3,7 +3,10 @@
 conda search scipy
 conda search --full-name python
 
-conda create -n py27 python=2.7 pymysql scipy numpy pandas vtk dateutil
+
+conda create -n py27 python=2.7 pymysql scipy numpy pandas vtk dateutil unicodecsv
+conda create -n py3 pymysql scipy numpy pandas vtk dateutil pymysql unicodecsv
+
 conda create --name my_project_env flask sqlalchemy numpy pandas
 conda create --name python27 python=2.7 anaconda
 source activate my_project_env

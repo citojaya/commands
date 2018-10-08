@@ -8,6 +8,8 @@ git pull origin master
 # Clone remote repository
 git clone <remote-url> <local-directory>
 
+# Change remote branch
+git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
 
 # Remote information
 git remote -v

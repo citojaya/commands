@@ -1,0 +1,42 @@
+
+Disctinonary
+
+Pandas
+
+Matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import os.path
+from matplotlib.ticker import FormatStrFormatter
+%matplotlib inline
+
+
+plt.rc('axes', labelsize=14) #font size of axes label
+plt.rc('xtick', labelsize=14) #font size of tick label
+plt.rc('ytick', labelsize=14) #font size of tick label
+fig = plt.figure()
+ax = fig.add_axes([0.2,0.2,0.7,0.7])
+# ax.set_xlim(0,0.06)
+# ax.set_ylim(0,1000)
+plt.yscale('log')
+bin1 = ax.hist(np.array(df921['CollE']), 60, density=0, alpha=0.0, histtype="step")
+(x,y) = dataToPlot(bin1)
+ax.plot(x,y, marker='o', markersize=4,color='red', label="0.7")
+ax.yaxis.set_major_formatter(FormatStrFormatter('%.3f'))
+
+ax.set_xlabel("Impact Energy ($\mu$ J)")
+ax.set_ylabel("No of collisions/No of particles")
+ax.legend(loc="upper right")
+plt.show()
+
+# save figure
+path = "E:/Documents/FDA/publications/ver10"
+fout = os.path.join(path, "PP_stage1_imp_energy_compare.png")
+fig.savefig(fout, dpi=600)
+
+
+Seaborn
+
+

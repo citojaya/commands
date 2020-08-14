@@ -38,5 +38,15 @@ fig.savefig(fout, dpi=600)
 
 
 Seaborn
+sns.heatmap(df.corr())
+# Join plot
+sns.jointplot(x='tip',y='total',data=df,kind='hex')
+sns.jointplot(x='tip',y='total',data=df,kind='reg')
+
+#pair plot
+sns.pairplot(df)
+sns.pairplot(df, hue='smoker')
+sns.distplot(df['tip'], kde=False, bins=30) #if kde=False then gives count
+
 
 

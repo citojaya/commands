@@ -37,6 +37,10 @@ df['Time'].astype(float)
 # Number formatiing a list
 "{:.4f}".format(t[i])
 
+# Feature Engineering
+df['salary'].fillna(0, inplace=True)
+df['test_score'].fillna(df['test_score'].mean(), inplace=True)
+
 
 # save figure
 path = "E:/Documents/FDA/publications/ver10"

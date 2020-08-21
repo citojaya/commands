@@ -31,6 +31,13 @@ ax.set_ylabel("No of collisions/No of particles")
 ax.legend(loc="upper right")
 plt.show()
 
+# Number formatting data frame
+df['Time'].astype(float)
+
+# Number formatiing a list
+"{:.4f}".format(t[i])
+
+
 # save figure
 path = "E:/Documents/FDA/publications/ver10"
 fout = os.path.join(path, "PP_stage1_imp_energy_compare.png")

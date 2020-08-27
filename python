@@ -38,8 +38,8 @@ df['Time'].astype(float)
 "{:.4f}".format(t[i])
 
 # Feature Engineering
-df['salary'].fillna(0, inplace=True)
-df['test_score'].fillna(df['test_score'].mean(), inplace=True)
+df['salary'].fillna(0, inplace=True) #fill NAN values with 0
+df['test_score'].fillna(df['test_score'].mean(), inplace=True) # fill NAN values with mean of 'test_score'
 
 
 # save figure
